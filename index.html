@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Happy Birthday, Handsome ❤️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Permanent+Marker&display=swap');
+:root {
+  --paper:#fffaf7; --red:#d9585b; --red2:#ef8c8e; --ink:#171414;
+  --cream:#fff3ed; --line:#e7b4b0;
+}
+* { box-sizing:border-box; }
+html,body { margin:0; min-height:100%; }
+body {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(239,140,142,.16) 0 2px, transparent 3px),
+    radial-gradient(circle at 80% 30%, rgba(217,88,91,.10) 0 2px, transparent 3px),
+    #fdf5f1;
+  background-size:34px 34px, 47px 47px, auto;
+  color:var(--ink);
+  font-family:'Patrick Hand',cursive;
+  overflow-x:hidden;
+}
+body:before {
+  content:""; position:fixed; inset:0; pointer-events:none; opacity:.25;
+  background-image:repeating-linear-gradient(0deg, transparent 0 5px, rgba(0,0,0,.018) 6px);
+  z-index:0;
+}
+.wrap { position:relative; z-index:1; max-width:980px; margin:auto; padding:28px 18px 70px; }
+.hero { text-align:center; padding:22px 8px 16px; }
+.kicker { font-size:1.05rem; letter-spacing:3px; text-transform:uppercase; }
+h1 {
+  font-family:'Permanent Marker',cursive; font-size:clamp(2.8rem,10vw,6.2rem);
+  line-height:.95; margin:12px 0 10px; transform:rotate(-2deg);
+}
+.red { color:var(--red); }
+.sub { font-size:1.35rem; max-width:600px; margin:auto; }
+.heart { display:inline-block; color:var(--red); animation:pulse 1.8s infinite; }
+@keyframes pulse { 50%{transform:scale(1.22) rotate(-4deg)} }
+.envelope-area { display:grid; place-items:center; margin:18px 0 45px; }
+.envelope {
+  position:relative; width:min(92vw,650px); height:390px; cursor:pointer;
+  perspective:1200px; filter:drop-shadow(0 18px 20px rgba(90,40,40,.15));
+}
+.env-back {
+  position:absolute; inset:0; background:var(--red); border-radius:14px;
+  border:4px solid #1d1717; overflow:hidden;
+}
+.env-back:before, .env-back:after {
+  content:""; position:absolute; width:65%; height:4px; background:#1d1717; opacity:.9;
+  top:55%; left:18%; transform-origin:center;
+}
+.env-back:before { transform:rotate(28deg); }
+.env-back:after { transform:rotate(-28deg); }
+.flap {
+  position:absolute; z-index:4; left:0; top:0; width:100%; height:58%;
+  background:#ef7779; border:4px solid #1d1717; border-bottom:0;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  transform-origin:top center; transition:transform .9s cubic-bezier(.2,.8,.2,1);
+}
+.note {
+  position:absolute; z-index:3; left:8%; right:8%; top:7%; height:84%;
+  background:var(--paper); border:3px solid #1d1717; border-radius:9px;
+  padding:25px clamp(20px,5vw,52px); text-align:left;
+  transform:translateY(50px); transition:transform .9s cubic-bezier(.2,.8,.2,1);
+  overflow:auto;
+}
+.note h2 { font-family:'Permanent Marker'; margin:0 0 12px; color:var(--red); font-size:2rem; }
+.note p { font-size:1.2rem; line-height:1.25; margin:0 0 12px; }
+.envelope.open .flap { transform:rotateX(180deg); z-index:2; }
+.envelope.open .note { transform:translateY(-22px); z-index:5; }
+.tap { margin-top:12px; font-size:1.1rem; color:#5e4646; }
+.section-title { text-align:center; font-family:'Permanent Marker'; font-size:2.3rem; margin:35px 0 18px; }
+.gallery { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.frame {
+  background:white; padding:9px 9px 17px; border:4px solid var(--red);
+  box-shadow:5px 6px 0 #1d1717; transform:rotate(var(--r));
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.frame:nth-child(2n) { border-color:#fff; outline:4px solid var(--red); }
+.frame:hover { transform:rotate(0) scale(1.03); box-shadow:7px 8px 0 #1d1717; }
+.frame img { display:block; width:100%; aspect-ratio:1/1; object-fit:cover; }
+.caption { text-align:center; margin-top:8px; font-size:1.15rem; }
+.love-note {
+  margin:45px auto 0; max-width:760px; background:#fff;
+  border:3px solid #1d1717; padding:30px; box-shadow:8px 9px 0 var(--red2);
+  position:relative; transform:rotate(.5deg);
+}
+.love-note:before { content:"♥"; position:absolute; right:18px; top:-22px; color:var(--red); font-size:42px; }
+.love-note p { font-size:1.35rem; line-height:1.3; margin:0; }
+.footer { text-align:center; padding:45px 10px 10px; font-size:1.2rem; }
+.floating-heart {
+  position:fixed; bottom:-40px; color:var(--red); font-size:24px; pointer-events:none;
+  animation:floatUp linear forwards; z-index:10;
+}
+@keyframes floatUp {
+  to { transform:translateY(-115vh) translateX(var(--drift)) rotate(25deg); opacity:0; }
+}
+@media(max-width:700px) {
+  .envelope { height:330px; }
+  .gallery { grid-template-columns:repeat(2,1fr); gap:15px; }
+  .note p { font-size:1.05rem; }
+  .note h2 { font-size:1.55rem; }
+}
+@media(max-width:450px) {
+  .envelope { height:360px; }
+  .gallery { grid-template-columns:1fr 1fr; }
+  .frame { padding:7px 7px 13px; border-width:3px; box-shadow:3px 4px 0 #1d1717; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <div class="kicker">a little birthday something for you</div>
+    <h1>Happy Birthday, <span class="red">Handsome</span> <span class="heart">♥</span></h1>
+    <div class="sub">21 looks good on you already. <span class="red">click the card ↓</span></div>
+  </header>
+
+  <main>
+    <section class="envelope-area">
+      <div class="envelope" id="card" aria-label="Open birthday card" role="button" tabindex="0">
+        <div class="env-back"></div>
+        <div class="note">
+          <h2>for my handsome ♡</h2>
+          <p>HAPPY BIRTHDAY HANDSOME ❤️ ‼️</p><p>thank you for being the answer to my prayers and showing up in my life and completely opening my eyes. you’re amazing and you’re going to go so far in life i can see it in your eyes. you breath life into everyone and shine light anywhere you go.</p><p>you are my best friend and i promise to love you and be there always.</p><p>relax, have fun, and enjoy your day. make it all about you. YOURE 21 !!</p><p>you are truly special and have such an incredible spark in you.</p><p>I love you :) i’m here for you</p>
+        </div>
+        <div class="flap"></div>
+      </div>
+      <div class="tap" id="tap">tap the envelope to open it ♡</div>
+    </section>
+
+    <h2 class="section-title">little pieces of us ♥</h2>
+    <section class="gallery">
+      <div class="frame" style="--r:-3deg"><img src="photos/photo1.jpeg" alt="A memory together"><div class="caption">one of my favorite people</div></div><div class="frame" style="--r:2deg"><img src="photos/photo2.jpeg" alt="A memory together"><div class="caption">my favorite kind of chaos</div></div><div class="frame" style="--r:1deg"><img src="photos/photo3.jpeg" alt="A memory together"><div class="caption">♡</div></div><div class="frame" style="--r:-3deg"><img src="photos/photo4.jpeg" alt="A memory together"><div class="caption">just us</div></div><div class="frame" style="--r:2deg"><img src="photos/photo5.jpeg" alt="A memory together"><div class="caption">you + me</div></div><div class="frame" style="--r:1deg"><img src="photos/photo6.jpeg" alt="A memory together"><div class="caption">the cutest little moments</div></div><div class="frame" style="--r:-3deg"><img src="photos/photo7.jpeg" alt="A memory together"><div class="caption">always you</div></div><div class="frame" style="--r:2deg"><img src="photos/photo8.jpeg" alt="A memory together"><div class="caption">our memories</div></div><div class="frame" style="--r:1deg"><img src="photos/photo9.jpeg" alt="A memory together"><div class="caption">more moments to come</div></div>
+    </section>
+
+    <section class="love-note">
+      <p><b>one more thing…</b><br><br>
+      I hope 21 brings you everything you deserve, every opportunity you're meant for, and so many reasons to smile. Keep being exactly who you are. I'm always rooting for you. <span class="red">♥</span></p>
+    </section>
+  </main>
+
+  <footer class="footer">made with love, a little crayon texture, and way too many hearts ♥</footer>
+</div>
+
+<script>
+const card = document.getElementById('card');
+const tap = document.getElementById('tap');
+
+function toggleCard() {
+  card.classList.toggle('open');
+  tap.textContent = card.classList.contains('open')
+    ? 'tap the card again to close it ♡'
+    : 'tap the envelope to open it ♡';
+  burst();
+}
+card.addEventListener('click', toggleCard);
+card.addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleCard(); }
+});
+
+function heart() {
+  const el = document.createElement('div');
+  el.className = 'floating-heart';
+  el.textContent = Math.random() > .25 ? '♥' : '♡';
+  el.style.left = (Math.random()*100) + 'vw';
+  el.style.setProperty('--drift', ((Math.random()-.5)*180) + 'px');
+  el.style.animationDuration = (4 + Math.random()*4) + 's';
+  el.style.fontSize = (16 + Math.random()*24) + 'px';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(), 8500);
+}
+setInterval(heart, 950);
+
+function burst() {
+  for(let i=0;i<16;i++) setTimeout(heart, i*45);
+}
+</script>
+</body>
+</html>
